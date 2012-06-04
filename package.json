@@ -2,7 +2,7 @@
   "author": "Will S. Laurance <w.laurance@gmail.com> (blog.wlaurance.com)",
   "name": "ditaa",
   "description": "use ditaa as a web service",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "homepage": "https://github.com/wlaurance/node-ditaa",
   "repository": {
     "type": "git",
@@ -12,7 +12,10 @@
   "scripts": {
     "test": "make test"
   },
-  "dependencies": {"mocha":"*", "colors":"*"},
+  "dependencies": {
+    "mocha": "*",
+    "colors": "*"
+  },
   "devDependencies": {},
   "optionalDependencies": {},
   "engines": {
