@@ -13,10 +13,11 @@
     "test": "make test"
   },
   "dependencies": {
-    "mocha": "*",
     "colors": "*"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "*"
+  },
   "optionalDependencies": {},
   "engines": {
     "node": "*"
