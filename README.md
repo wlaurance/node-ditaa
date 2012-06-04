@@ -1,4 +1,4 @@
 node-ditaa
 ==========
 
-node package to use ditaa as a web service
+[Glog plugin](https://github.com/guyht/Glog) to use ditaa as a web service
