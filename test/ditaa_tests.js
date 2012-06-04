@@ -10,4 +10,16 @@ describe('ditaa', function() {
       done();
     });
   });
+  it('should find ditaa tags in article 2', function(done){
+    ditaa.ditaaIn(articles[1], function(well){
+      assert.equal(well, true);
+      done();
+    });
+  });
+  it('shouldnt find ditaa tags in article 1', function(done){
+    ditaa.ditaaIn(articles[0], function(well){
+      assert.equal(well, false);
+      done();
+    });
+  });
 });

@@ -12,7 +12,7 @@
   "scripts": {
     "test": "make test"
   },
-  "dependencies": {"mocha":"*"},
+  "dependencies": {"mocha":"*", "colors":"*"},
   "devDependencies": {},
   "optionalDependencies": {},
   "engines": {
