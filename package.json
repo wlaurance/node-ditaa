@@ -8,11 +8,11 @@
     "type": "git",
     "url": "git://github.com/wlaurance/node-ditaa.git"
   },
-  "main": "ditaa.js",
+  "main": "lib/ditaa.js",
   "scripts": {
     "test": "make test"
   },
-  "dependencies": {},
+  "dependencies": {"mocha":"*"},
   "devDependencies": {},
   "optionalDependencies": {},
   "engines": {
