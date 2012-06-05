@@ -54,4 +54,10 @@ describe('ditaa', function() {
       done();
     });
   });
+  it('should make anchor tag for markdown', function(done){
+    ditaa.makeAnchor('http://www.gravatar.com/avatar/a45bb5be65f2d59d813697825cb48194.png', 'gravatar', true, function(tag){
+      assert.equal(tag, '![gravatar](http://www.gravatar.com/avatar/a45bb5be65f2d59d813697825cb48194.png)');
+      done();
+    });
+  });
 });
