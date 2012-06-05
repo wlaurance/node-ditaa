@@ -8,8 +8,8 @@ class Ditaa
 
   load:(glog) ->
     glog.registerArticleHook (articles, cb) =>
-      @processArticles articles
-      cb null, articles
+      @processArticles articles, (modified) ->
+        cb null, modified
 
   processArticles:(articles, cb)->
     for article in articles
@@ -42,6 +42,8 @@ class Ditaa
     for tag in tag_sections
       tag.coded = @encode(a[tag.top..tag.bottom].join('\n'))
       tag.url = @makeURL tag.coded
+      a[(tag.top - 1)..(tag.bottom + 1)] = @makeAnchor tag.url, 'image', false
+    console.log a
 
 
   getImage:(url, cb)->
@@ -61,6 +63,15 @@ class Ditaa
     coded = encodeURIComponent(what)
     cb coded if cb?
     return coded
+
+  makeAnchor:(url, alt, markdown, cb)->
+    if markdown
+      tag = "![" + alt + "](" + url + ")"
+    else
+      tag = '<img src="' + url + '" alt="' + alt + '">'
+    cb tag if cb?
+    return tag
+
 
 
 

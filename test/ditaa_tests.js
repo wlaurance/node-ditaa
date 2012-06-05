@@ -48,4 +48,10 @@ describe('ditaa', function() {
       });
     });
   });
+  it('should make anchor tag for html', function(done){
+    ditaa.makeAnchor('http://www.gravatar.com/avatar/a45bb5be65f2d59d813697825cb48194.png', 'gravatar', false, function(tag){
+      assert.equal(tag, '<img src="http://www.gravatar.com/avatar/a45bb5be65f2d59d813697825cb48194.png" alt="gravatar">');
+      done();
+    });
+  });
 });
