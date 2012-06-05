@@ -39,6 +39,11 @@ class Ditaa
         tag_sections.push section
         section = {}
     for tag in tag_sections
-      console.log a[tag.top..tag.bottom].join('\n')
+      console.log @encode(a[tag.top..tag.bottom].join('\n'))
+  
+  encode:(what, cb)->
+    coded = encodeURIComponent(what)
+    cb coded if cb?
+    return coded
 
 module.exports = new Ditaa()

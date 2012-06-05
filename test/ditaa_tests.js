@@ -22,4 +22,10 @@ describe('ditaa', function() {
       done();
     });
   });
+  it('should URI encode data within tags', function(done){
+    ditaa.encode('    ', function(encoded){
+      assert.equal(encoded, '%20%20%20%20');
+      done();
+    });
+  });
 });
