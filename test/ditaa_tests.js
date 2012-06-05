@@ -2,6 +2,7 @@ var ditaa = require('../lib/ditaa'),
 assert = require('assert'),
 exec = require('child_process').exec;
 articles = require('./test_articles');
+var testDitaa = '     +--------+\n     | c897   |\n          |  Text  |\n               |Document|\n                    |     {d}|\n                         +---+----+';
 describe('ditaa', function() {
 
   it('should load read articles and find ditaa tags', function(done) {
@@ -26,6 +27,25 @@ describe('ditaa', function() {
     ditaa.encode('    ', function(encoded){
       assert.equal(encoded, '%20%20%20%20');
       done();
+    });
+  });
+  it('should prepare ditaa tag urls', function(done){
+    ditaa.encode('    ', function(encoded){
+      ditaa.makeURL(encoded, function(url){
+        assert.equal(url, 'http://ditaa.org/ditaa/render?grid=%20%20%20%20');
+        done();
+      });
+    });
+  });
+  it('should make a http get request on appropriate url', function(done){
+    ditaa.encode(testDitaa, function(encoded){
+      ditaa.makeURL(encoded, function(url){
+        ditaa.getImage(url, function(bytes){
+          console.info(bytes);
+          assert.notEqual(bytes, undefined);
+          done();
+        });
+      });
     });
   });
 });

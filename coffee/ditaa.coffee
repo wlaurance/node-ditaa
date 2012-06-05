@@ -1,7 +1,8 @@
 colors = require('colors')
+XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest
 class Ditaa
   constructor:()->
-    @url = "http://ditaa.org/ditaa/"
+    @url = "http://ditaa.org/ditaa/render?grid="
     @startTag = '++Ditaa++'
     @endTag = '--Ditaa--'
 
@@ -39,11 +40,28 @@ class Ditaa
         tag_sections.push section
         section = {}
     for tag in tag_sections
-      console.log @encode(a[tag.top..tag.bottom].join('\n'))
+      tag.coded = @encode(a[tag.top..tag.bottom].join('\n'))
+      tag.url = @makeURL tag.coded
+
+
+  getImage:(url, cb)->
+    xhr = new XMLHttpRequest()
+    xhr.onreadystatechange = () ->
+      if @readyState is 4
+        cb @responseText
+    xhr.open "GET", url
+    xhr.send()
+
+  makeURL:(coded, cb)->
+    url = @url + coded
+    cb url if cb?
+    return url
   
   encode:(what, cb)->
     coded = encodeURIComponent(what)
     cb coded if cb?
     return coded
+
+
 
 module.exports = new Ditaa()

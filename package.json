@@ -13,7 +13,8 @@
     "test": "make test"
   },
   "dependencies": {
-    "colors": "*"
+    "colors": "*",
+    "xmlhttprequest":">=1.4.0"
   },
   "devDependencies": {
     "mocha": "*"
