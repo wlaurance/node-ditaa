@@ -27,8 +27,18 @@ class Ditaa
     cb false if cb?
     return false
 
-    return true
   processArticle:(article)->
-    console.log 'Doing something useful with ' + article.title
+    a = article.body.split '\n'
+    tag_sections = []
+    section = {}
+    for line,i in a
+      if (line.indexOf @startTag) isnt -1
+        section.top = i+1
+      else if (line.indexOf @endTag) isnt -1
+        section.bottom = i - 1
+        tag_sections.push section
+        section = {}
+    for tag in tag_sections
+      console.log a[tag.top..tag.bottom].join('\n')
 
 module.exports = new Ditaa()
