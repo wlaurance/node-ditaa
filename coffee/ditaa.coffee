@@ -7,7 +7,7 @@ class Ditaa
     @endTag = '--Ditaa--'
 
   load:(glog) ->
-    glog.registerArticleHook (articles, cb) =>
+    glog.registerPostArticleHook (articles, cb) =>
       @processArticles articles, (modified) ->
         cb null, modified
 
