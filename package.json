@@ -2,7 +2,7 @@
   "author": "Will S. Laurance <w.laurance@gmail.com> (blog.wlaurance.com)",
   "name": "ditaa",
   "description": "use ditaa as a web service",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "homepage": "https://github.com/wlaurance/node-ditaa",
   "repository": {
     "type": "git",
