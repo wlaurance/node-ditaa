@@ -43,8 +43,7 @@ class Ditaa
       tag.coded = @encode(a[tag.top..tag.bottom].join('\n'))
       tag.url = @makeURL tag.coded
       a[(tag.top - 1)..(tag.bottom + 1)] = @makeAnchor tag.url, 'image', false
-      article.body = a
-    console.log a
+      article.body = a.join '\n'
 
 
   getImage:(url, cb)->
