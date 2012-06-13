@@ -1,23 +1,18 @@
 var ditaa = require('../lib/ditaa'),
 assert = require('assert'),
 exec = require('child_process').exec;
-articles = require('./test_articles');
 var testDitaa = '     +--------+\n     | c897   |\n          |  Text  |\n               |Document|\n                    |     {d}|\n                         +---+----+';
 describe('ditaa', function() {
 
-  it('should load read articles and find ditaa tags', function(done) {
-    ditaa.processArticles(articles, function(artic) {
-      assert.equal(artic.length, 2);
-      done();
-    });
-  });
   it('should find ditaa tags in article 2', function(done){
+    var articles = require('./test_articles');
     ditaa.ditaaIn(articles[1], function(well){
       assert.equal(well, true);
       done();
     });
   });
   it('shouldnt find ditaa tags in article 1', function(done){
+    var articles = require('./test_articles');
     ditaa.ditaaIn(articles[0], function(well){
       assert.equal(well, false);
       done();
@@ -57,6 +52,14 @@ describe('ditaa', function() {
   it('should make anchor tag for markdown', function(done){
     ditaa.makeAnchor('http://www.gravatar.com/avatar/a45bb5be65f2d59d813697825cb48194.png', 'gravatar', true, function(tag){
       assert.equal(tag, '![gravatar](http://www.gravatar.com/avatar/a45bb5be65f2d59d813697825cb48194.png)');
+      done();
+    });
+  });
+  it('should load read articles and find ditaa tags', function(done) {
+    var articles = require('./test_articles');
+    ditaa.processArticles(articles, function(artic) {
+      assert.equal(artic.length, 2);
+      assert.equal(typeof(artic[1].body), 'string');
       done();
     });
   });
