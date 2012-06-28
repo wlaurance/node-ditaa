@@ -1,5 +1,3 @@
-colors = require('colors')
-XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest
 class Ditaa
   constructor:()->
     @url = "http://ditaa.org/ditaa/render?grid="
@@ -44,15 +42,6 @@ class Ditaa
       tag.url = @makeURL tag.coded
       a[(tag.top - 1)..(tag.bottom + 1)] = @makeAnchor tag.url, 'image', false
       article.body = a.join '\n'
-
-
-  getImage:(url, cb)->
-    xhr = new XMLHttpRequest()
-    xhr.onreadystatechange = () ->
-      if @readyState is 4
-        cb @responseText
-    xhr.open "GET", url
-    xhr.send()
 
   makeURL:(coded, cb)->
     url = @url + coded
