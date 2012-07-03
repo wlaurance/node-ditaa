@@ -19,3 +19,5 @@ Use ditaa tags
 ++Ditaa++
 **Cool Ditaa ascii here**
 --Ditaa--
+
+**Available soon for Glog**
